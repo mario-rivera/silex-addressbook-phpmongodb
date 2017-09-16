@@ -9,10 +9,17 @@ class AddressBook extends Application{
 
         $this['debug'] = true;
 
-        $this->get('/', function () {
-            return 'Hello World';
-        });
+        $this->bootServiceProviders();
 
         return $this;
+    }
+
+    private function bootServiceProviders(){
+
+        $providers =  require_once  __DIR__ . '/Services/definitions.php';
+
+        foreach( $providers as $provider ){
+            $this->register(new $provider);
+        }
     }
 }
