@@ -1,13 +1,14 @@
 <?php
 namespace App;
 
-use Silex\Application;
+use DI\Bridge\Silex\Application;
 
 class AddressBook extends Application{
 
     public function load(){
 
         $this['debug'] = true;
+        $this['dir.app'] = __DIR__;
 
         $this->bootServiceProviders();
 

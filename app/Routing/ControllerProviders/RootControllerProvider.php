@@ -11,8 +11,7 @@ class RootControllerProvider implements ControllerProviderInterface{
         // creates a new controller based on the default route
         $controllers = $app['controllers_factory'];
 
-
-        $controllers->get('/', 'App\Controllers\Home\HomeController::get');
+        $controllers->get('/', [\App\Controllers\Home\HomeController::class, 'get']);
         return $controllers;
     }
 }
