@@ -24,17 +24,35 @@
         </div>
     </div>
 
-    {% if org.people.count() > 0 %}
+
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="list-group">
-                        {% for person in org.people %}
-                            <a href="/people/{{ person.getId }}" class="list-group-item">{{ person.name }}</a>
-                        {% endfor %}
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">People in {{ org.name }}</h3>
+                        </div>
+
+                        <div class="list-group">
+                            <div class="list-group-item">
+                                <div class="btn-toolbar" role="toolbar">
+                                    <div class="btn-group" role="group">
+                                        <a href="/organization/{{ org.getId() }}/people/new" class="btn btn-primary">
+                                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add New Contact
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            {% if org.people.count() > 0 %}
+                                {% for person in org.people %}
+                                    <a href="/organization/{{ org.getId() }}/people/{{ person.getId }}" class="list-group-item">{{ person.name }}</a>
+                                {% endfor %}
+                            {% else %}
+                                <div class="list-group-item list-group-item-warning">There is no people in this organization</div>
+                            {% endif %}
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    {% endif %}
 {% endblock %}
