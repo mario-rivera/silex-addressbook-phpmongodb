@@ -1,0 +1,37 @@
+{% extends "layouts/master.html" %}
+
+{% block content %}
+    <!-- Page Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="btn-toolbar" role="toolbar">
+                    <div class="btn-group" role="group">
+                        <a href="/organization/new" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New Organization
+                        </a>
+                    </div>
+                </div>
+
+                <div class="page-header">
+                    <h1>Your Organizations <span class="badge">{{ orgs.count() }}</span></h1>
+                </div>
+
+                {% if orgs.count == 0 %}
+                    <div class="alert alert-warning">
+                        There are no saved organizations.
+                    </div>
+                {% else %}
+                    <div class="list-group">
+                        {% for org in orgs %}
+                            <a href="/organization/{{ org.getId() }}" class="list-group-item">
+                                <h4 class="list-group-item-heading">{{ org.name }}</h4>
+                                <p class="list-group-item-text">{{ org.postcode }}</p>
+                            </a>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -4,6 +4,7 @@ namespace App\Controllers\Home;
 use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
 use Twig_Environment;
+use App\DataLayer\Models\Organization;
 
 class HomeController{
 
@@ -14,6 +15,8 @@ class HomeController{
 
     public function get( Application $app, Request $request ){
 
-        return $this->twig->render('home/helloworld.html', []);
+        return $this->twig->render('home/organizations.html', [
+            'orgs'  => Organization::all()
+        ]);
     }
 }
