@@ -7,9 +7,23 @@
             <div class="col-md-12">
                 <div class="btn-toolbar" role="toolbar">
                     <div class="btn-group" role="group">
+                        <a href="/" class="btn btn-default">
+                            <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+                            Back to Main List
+                        </a>
+                    </div>
+
+                    <div class="btn-group" role="group">
                         <a href="/organization/edit/{{ org.getId() }}" class="btn btn-primary">
                             <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                             Edit Organization
+                        </a>
+                    </div>
+
+                    <div class="btn-group" role="group">
+                        <a href="/organization/delete/{{ org.getId() }}" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                            Delete Organization
                         </a>
                     </div>
                 </div>
@@ -44,8 +58,13 @@
                                 </div>
                             </div>
                             {% if org.people.count() > 0 %}
+                                <div class="list-group-item list-group-item-info">There are {{ org.people.count() }} contacts in this organization.</div>
+
                                 {% for person in org.people %}
-                                    <a href="/organization/{{ org.getId() }}/people/{{ person.getId }}" class="list-group-item">{{ person.name }}</a>
+                                    <a href="/organization/{{ org.getId() }}/people/{{ person.getId }}" class="list-group-item">
+                                        <h4 class="list-group-item-heading">{{ person.name }}</h4>
+                                        <p class="list-group-item-text">{{ person.job_title }}</p>
+                                    </a>
                                 {% endfor %}
                             {% else %}
                                 <div class="list-group-item list-group-item-warning">There is no people in this organization</div>

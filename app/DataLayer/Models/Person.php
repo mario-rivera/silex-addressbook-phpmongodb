@@ -11,4 +11,6 @@ class Person extends Model{
         // 1 to 1 reference
         // 'org' => array('model'=>'App\DataLayer\Models\Organization','type'=> Model::DATA_TYPE_REFERENCE)
     );
+
+    public static $massAssign = ['name', 'phone', 'job_title'];
 }

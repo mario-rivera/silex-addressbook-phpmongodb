@@ -21,7 +21,11 @@ class RootControllerProvider implements ControllerProviderInterface{
         $controllers->get('/organization/{id}', [\App\Controllers\Organizations\OrganizationController::class, 'view']);
 
         $controllers->get('/organization/{org_id}/people/new', [\App\Controllers\People\PeopleController::class, 'new']);
-        // $controllers->get('/organization/{id}/people/{person_id}', [\App\Controllers\People\PeopleController::class, 'view']);
+        $controllers->post('/organization/{org_id}/people/new', [\App\Controllers\People\PeopleController::class, 'postNew']);
+        $controllers->get('/organization/{org_id}/people/{person_id}', [\App\Controllers\People\PeopleController::class, 'view']);
+
+        $controllers->get('/organization/{org_id}/people/edit/{person_id}', [\App\Controllers\People\PeopleController::class, 'edit']);
+        $controllers->post('/organization/{org_id}/people/edit/{person_id}', [\App\Controllers\People\PeopleController::class, 'postEdit']);
 
         return $controllers;
     }
