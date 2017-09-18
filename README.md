@@ -15,3 +15,8 @@
 
 ## After Installation
 - Go to localhost:9999 to view the application.
+
+## Additional Notes
+- Project built with Silex and MongoDB.
+- The delete methods have been oversimplified and without confirmation just as an example.
+- Validates input data with respect/validation library.
