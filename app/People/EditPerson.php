@@ -37,4 +37,9 @@ class EditPerson{
         $person->save();
         return $person;
     }
+
+    public function delete(Person $person){
+
+        return $person->delete();
+    }
 }

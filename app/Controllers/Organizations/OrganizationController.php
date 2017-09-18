@@ -96,4 +96,18 @@ class OrganizationController{
         $id = ( is_object($organization->getId()) ) ? $organization->getId()->__toString() : $organization->getId();
         return $app->redirect( "/organization/{$id}" );
     }
+
+    public function delete( Application $app, Request $request, $id ){
+
+        $organization = Organization::id( $id );
+        if( !$organization ){
+
+            throw new Exception( 'Organization not found.' );
+        }
+
+        $editService = $this->di->make(EditOrganization::class);
+        $editService->delete( $organization );
+
+        return $app->redirect( "/" );
+    }
 }

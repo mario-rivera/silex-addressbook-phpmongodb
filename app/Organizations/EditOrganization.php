@@ -26,4 +26,11 @@ class EditOrganization{
         $org->save();
         return $org;
     }
+
+    public function delete(Organization $org){
+
+        // delete the associated contacts
+        $org->people->delete();
+        return $org->delete();
+    }
 }

@@ -105,4 +105,18 @@ class PeopleController{
         $id = ( is_object($person->getId()) ) ? $person->getId()->__toString() : $person->getId();
         return $app->redirect( "/organization/{$org_id}/people/{$id}" );
     }
+
+    public function delete( Application $app, Request $request, $org_id, $person_id ){
+
+        $person = Person::id( $person_id );
+        if( !$person ){
+
+            throw new Exception( 'Contact not found.' );
+        }
+
+        $editService = $this->di->make(EditPerson::class);
+        $editService->delete( $person );
+
+        return $app->redirect( "/organization/{$org_id}" );
+    }
 }
