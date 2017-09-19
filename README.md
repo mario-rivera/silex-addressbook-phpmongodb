@@ -20,3 +20,7 @@
 - Project built with Silex and MongoDB.
 - The delete methods have been oversimplified and without confirmation just as an example.
 - Validates input data with respect/validation library.
+
+## Uninstall
+- Windows: run "./build-powershell.ps1 destroy"
+- UNIX based: run "./build.sh destroy"

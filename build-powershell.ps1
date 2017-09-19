@@ -48,6 +48,8 @@ function destroy(){
 
     (docker stop $APP_CONTAINER_NAME) -and (docker rm $APP_CONTAINER_NAME)
     (docker stop $MONGO_DB_CONTAINER_NAME) -and (docker rm $MONGO_DB_CONTAINER_NAME)
+    docker network rm $NETNAME
+    docker rmi $APP_IMAGE_NAME
 }
 
 $fn=$args[0]

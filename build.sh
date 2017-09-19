@@ -46,4 +46,12 @@ web_up(){
     docker run -d --name $APP_CONTAINER_NAME -p 9999:80 --network=$NETNAME -v $SCRIPT_WORKDIR:/var/www $APP_IMAGE_NAME
 }
 
+destroy(){
+
+    docker stop $APP_CONTAINER_NAME && docker rm $APP_CONTAINER_NAME
+    docker stop $MONGO_DB_CONTAINER_NAME && docker rm $MONGO_DB_CONTAINER_NAME
+    docker network rm $NETNAME
+    docker rmi $APP_IMAGE_NAME
+}
+
 $1
